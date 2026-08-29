@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: jhon-carlo-portfolio
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/auth/me
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OWNER_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_OWNER
+        value: c4rl0-0
+      - key: GITHUB_REPO
+        value: jhoncarloabling.github.io
+      - key: GITHUB_BRANCH
+        value: main
+      - key: GITHUB_PROJECTS_PATH
+        value: storage/custom-projects.json
